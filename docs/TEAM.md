@@ -1,58 +1,46 @@
 # Danh Sách Thành Viên & Báo Cáo Phân Công Nhóm
 
-- **Tên Nhóm:** `[Điền tên nhóm]`
+- **Tên Nhóm:** H2Q
 - **Mã Nhóm / Lớp:** `K4-L3-DAY10`
-- **Tên Repository Nộp Bài:** `K4-L3-DAY10-TenNhom-DataPipeline`
+- **Tên Repository Nộp Bài:** https://github.com/lechihung252/K4-L3A-Day10-Data-Pipeline-Data-Observability
 
 ---
 
 ## # Thành viên
 
+Nhóm 3 thành viên. Mỗi file chỉ do một người sở hữu; chi tiết phân công và data contract xem [`docs/PHAN_CONG.md`](PHAN_CONG.md).
+
 | STT | Họ và tên | MSSV | Email | Vai trò & Phân công công việc | Báo cáo cá nhân |
 |---:|---|---|---|---|---|
-| 1 | | | | Trưởng nhóm / Pipeline Integrator (`core/`, `phase1.py`, `corruption_flow.py`) | `report/<MSSV1>_HoTen.md` |
-| 2 | | | | Data Foundation & Recovery (`crossref.py`, `cleaning.py`, raw data) | `report/<MSSV2>_HoTen.md` |
-| 3 | | | | RAG & Vector Index (`retrieval/index.py`, `embeddings.py`, ChromaDB) | `report/<MSSV3>_HoTen.md` |
-| 4 | | | | Observability & Evaluation (`quality.py` GX 1.x, `testset.py`, reporting) | `report/<MSSV4>_HoTen.md` |
-
-*(Nếu nhóm có 3 hoặc 5-6 thành viên, xem bảng phân công chi tiết theo vai trò trong file `CHECKPOINTS.md`)*.
+| 1 | Lê Chí Hùng | 2A202602863 | lechihung252@gmail.com | Trưởng nhóm / Pipeline Integrator & RAG (`core/`, `phase1.py`, `corruption_flow.py`, `retrieval/`, artifacts `data/`) — CP0, CP2, CP3, CP5 | `report/2A202602863_LeChiHung.md` |
+| 2 | Nguyễn Văn Hưởng | 2A202602743 | nguyenvanhuong2405@gmail.com | Data Foundation (`crossref.py`, `cleaning.py`, `corruption.py`, `data/raw/`) — CP0, CP1, CP4 | `report/2A202602743_NguyenVanHuong.md` |
+| 3 | Lê Duy Quân | 2A202602731 | leduyquan2574@gmail.com | Observability & Evaluation (`quality.py` GX 1.x, `testset.py`, `reporting.py`) — CP1, CP2, CP3, CP5 | `report/2A202602731_LeDuyQuan.md` |
 
 ---
 
 ## # Cá nhân
 
-### ## HoVaTen1-MSSV1
-- **Vai trò:** Trưởng nhóm & Điều phối Pipeline.
+### ## LeChiHung-2A202602863
+- **Vai trò:** Trưởng nhóm, Pipeline Integrator & RAG.
 - **Công việc chi tiết đã hoàn thành:**
-  - Thiết lập cấu hình hệ thống `core/config.py` và đường dẫn artifacts `core/utils.py`.
-  - Kết nối luồng thực thi trong `src/pipelines/phase1.py` và `src/pipelines/corruption_flow.py`.
-  - Kiểm tra tính nhất quán của các artifacts và theo dõi Contributor tracking trên GitHub nhánh `main`.
+  - Phân công theo file và chốt data contract giữa các module (`docs/PHAN_CONG.md`): 11 cột clean bắt buộc, `published` dạng chuỗi, key `success` / `is_fresh`, mẫu câu hỏi test set khớp `retrieval/qa.py`.
+  - Ghép baseline pipeline `src/pipelines/phase1.py`: ingest → clean → quality gate (fail thì dừng, không index) → ChromaDB `papers-baseline` → test set → evaluate → report → agent demo.
+  - Ghép `src/pipelines/corruption_flow.py`: corrupt → quality check → index `papers-corrupted` → evaluate → repair từ raw snapshot → quality gate → index `papers-repaired` → evaluate → báo cáo 3 trạng thái.
+  - Thêm `write_dataframe` vào `src/core/utils.py`; review và chạy kiểm thử tích hợp code của TV2, TV3.
+  - Chạy pipeline cuối, commit toàn bộ artifacts `data/`, viết báo cáo nhóm `report/group_report.md`.
 - **Điều học được / Đóng góp chính:**
-  - Hiểu sâu sắc về thiết kế Idempotent Pipeline và quản lý trạng thái luồng dữ liệu đa tầng.
+  - Quality gate phải đặt trước vector store mới chặn được dữ liệu xấu; repair idempotent dựa trên việc giữ raw snapshot bất biến và tái tạo từ đó thay vì vá tay.
 
-### ## HoVaTen2-MSSV2
-- **Vai trò:** Phụ trách Ingestion, Làm sạch & Phục hồi dữ liệu.
+### ## NguyenVanHuong-2A202602743 (TV2 tự điền)
+- **Vai trò:** Data Foundation — Ingestion, Cleaning & Corruption.
 - **Công việc chi tiết đã hoàn thành:**
-  - Xây dựng module thu thập Crossref API với cơ chế Fallback offline trong `src/ingestion/crossref.py`.
-  - Chuẩn hóa schema, tính toán trường `age_days` và `text_for_embedding` trong `src/ingestion/cleaning.py`.
-  - Thực thi cơ chế Idempotent Repair phục hồi dữ liệu từ raw snapshot.
+  - [TV2 tự điền]
 - **Điều học được / Đóng góp chính:**
-  - Kỹ thuật truy vết nguồn gốc dữ liệu (Data Lineage) và bảo toàn raw snapshot trước khi biến đổi.
+  - [TV2 tự điền]
 
-### ## HoVaTen3-MSSV3
-- **Vai trò:** Phụ trách RAG, Vector Database & Embedding.
+### ## LeDuyQuan-2A202602731 (TV3 tự điền)
+- **Vai trò:** Observability & Evaluation.
 - **Công việc chi tiết đã hoàn thành:**
-  - Quản lý mô hình embedding `sentence-transformers/all-MiniLM-L6-v2`.
-  - Nạp và quản lý 3 collection riêng biệt trong ChromaDB (`papers-baseline`, `papers-corrupted`, `papers-repaired`).
-  - Xây dựng QA Agent truy vấn ngữ cảnh chính xác theo tài liệu.
+  - [TV3 tự điền]
 - **Điều học được / Đóng góp chính:**
-  - Cách cô lập các không gian vector để so sánh khách quan giữa dữ liệu sạch và dữ liệu bị lỗi.
-
-### ## HoVaTen4-MSSV4
-- **Vai trò:** Phụ trách Data Observability & Benchmark Evaluation.
-- **Công việc chi tiết đã hoàn thành:**
-  - Thiết lập Quality Gate theo chuẩn mới **Great Expectations 1.x** và giám sát Freshness SLA trong `src/observability/quality.py`.
-  - Xây dựng bộ câu hỏi đánh giá chuẩn trong `src/evaluation/testset.py`.
-  - Đo lường và xuất bảng đối chiếu 3 trạng thái vào `data/reports/corruption_report.md`.
-- **Điều học được / Đóng góp chính:**
-  - Cách thiết lập hệ thống cảnh báo sớm chặn đứng hiện tượng Silent Failure trước khi dữ liệu vào serving layer.
+  - [TV3 tự điền]
