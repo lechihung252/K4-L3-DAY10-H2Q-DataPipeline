@@ -42,9 +42,14 @@ Nhóm 3 thành viên. Mỗi file chỉ do một người sở hữu; chi tiết 
   - Hiểu kỹ thuật truy vết nguồn gốc dữ liệu, bảo toàn raw snapshot, thiết kế data contract ổn định và tác động của dữ liệu lỗi đến RAG.
   - Các commit chính: `8b524d2`, `265f31b`, `c645dfb`.
 
-### ## LeDuyQuan-2A202602731 (TV3 tự điền)
-- **Vai trò:** Observability & Evaluation.
+### ## LeDuyQuan-2A202602731
+- **Vai trò:** Observability & Evaluation (TV3).
 - **Công việc chi tiết đã hoàn thành:**
-  - [TV3 tự điền]
+  - Thiết lập Quality Gate theo chuẩn mới **Great Expectations 1.x** (`mode="ephemeral"`) với 4 Expectations và giám sát Freshness SLA trong `src/observability/quality.py`.
+  - Xây dựng bộ câu hỏi đánh giá chuẩn 10 câu hỏi bao phủ 4 dạng (`summary`, `authors`, `date`, `categories`) trong `src/evaluation/testset.py`.
+  - Đo lường và xuất bảng đối chiếu 3 trạng thái vào `data/reports/corruption_report.md` và `data/reports/phase1_report.md`.
+  - Tối ưu lazy loading import `datasets` trong `src/evaluation/metrics.py` và chuẩn hóa hợp đồng dữ liệu với `src/pipelines/phase1.py`.
 - **Điều học được / Đóng góp chính:**
-  - [TV3 tự điền]
+  - Hiểu rõ cơ chế ngăn chặn Silent Failure bằng Quality Gate tự động trước khi nạp dữ liệu vào Vector Database, nguyên lý Idempotent Repair và kỹ thuật đánh giá định lượng sự suy giảm chất lượng của hệ thống RAG.
+  - Các commit chính: `4257758`, `7023d48`.
+
