@@ -31,12 +31,16 @@ Nhóm 3 thành viên. Mỗi file chỉ do một người sở hữu; chi tiết 
 - **Điều học được / Đóng góp chính:**
   - Quality gate phải đặt trước vector store mới chặn được dữ liệu xấu; repair idempotent dựa trên việc giữ raw snapshot bất biến và tái tạo từ đó thay vì vá tay.
 
-### ## NguyenVanHuong-2A202602743 (TV2 tự điền)
+### ## NguyenVanHuong-2A202602743
 - **Vai trò:** Data Foundation — Ingestion, Cleaning & Corruption.
 - **Công việc chi tiết đã hoàn thành:**
-  - [TV2 tự điền]
+  - Xây dựng module thu thập Crossref API với retry cho 429/503 và cơ chế fallback offline trong `src/ingestion/crossref.py`.
+  - Chuẩn hóa schema 11 cột, xử lý text/ngày, khử DOI trùng, tính `age_days`, `summary_chars` và `text_for_embedding` trong `src/ingestion/cleaning.py`.
+  - Xây dựng corruption suite gồm 6 lỗi có khả năng tái lập trong `src/ingestion/corruption.py` và ghi log chi tiết theo `paper_id`.
+  - Cung cấp `load_raw_records()` và `build_clean_dataframe()` để TV1 thực thi Idempotent Repair từ raw snapshot.
 - **Điều học được / Đóng góp chính:**
-  - [TV2 tự điền]
+  - Hiểu kỹ thuật truy vết nguồn gốc dữ liệu, bảo toàn raw snapshot, thiết kế data contract ổn định và tác động của dữ liệu lỗi đến RAG.
+  - Các commit chính: `8b524d2`, `265f31b`, `c645dfb`.
 
 ### ## LeDuyQuan-2A202602731 (TV3 tự điền)
 - **Vai trò:** Observability & Evaluation.
