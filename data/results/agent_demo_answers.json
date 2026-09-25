@@ -1,0 +1,26 @@
+[
+  {
+    "question": "Which papers in the corpus discuss agentic retrieval-augmented generation?",
+    "answer": [
+      {
+        "type": "text",
+        "text": "The following papers discuss agentic retrieval-augmented generation:\n\n*   \"Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\" by Minh Nguyen and Hoang Le, published on 2026-06-01 (paper_id: 10.1145/3637528.3671813).\n*   \"Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\" by Minh Nguyen and Hoang Le, published on 2026-05-20 (paper_id: 10.1145/3637528.3671801).",
+        "extras": {
+          "signature": "CukFAWkUfRMDNTXgmTRbvJpSnGsjoeJMZwVMMKiJfID1F5Z+jFn5KxS7x7Vt1r7hmG27FOgJish26N8jlZvZMLsjVoqV307ztKfqD4tHwhZue9Lw4gNtKz1L8afDH8Y94cZs8HZCw6sbh+6ZuKagUBNWJxQf3pg4rHFy3Jqa5juY4iXCyJrG8GffVFg7NLNV1tm97qbEjtB+MNW4KxzJuHZVbg0Ex2DXzJ85kZqEMTE8E9VuEy39AC1DRBLxFhLg7JdAmkGkoMd75sd7nQAIEw71oUCU/U5+tKFRo8G0ySMKcixXE3fOldKA+9E/N4qnnLYkvFHQTfehsc0FNGV6ZmYhlbGcYicOHrPPxkAmf5R62l1/DFKdQkIhJ6lewz1//jhqmp5CT/v8FkJOXEFHu/lphkdXwBVvyy0tFxNwDyTxv/yyu1+1Ke+iCpMD5nIc04ieYwJmshyZphkQqnIolDrA14+RYM0uoJ12GZ83rwbaaEzqflG5vGYWnwOsXaTKvG3q8xBnUTDRzj0PgO7JLd8uhaIe2cjVWLUXJJ7TTV+T4k1AgQbyC3XRwCE1tKyqmoSp91VB3iM+K2EiZGRYg/r5SzjV8ukiNDX0A5xHS/IxFLGVb2Cr1fHMGbJXR7h+HlGHvqgjs4W/UW9hwtwdwyNz4jqus1364GmBpXJhzLbNg0nFpef8ycKq6iJbfK6qKBb1AOeioRjfuqC150vIgDeryNP+gwnH4QkvCETylVAAcgv5lDRg7iQBHJMr3mJipX2PhRa8A6e5ABG/0i+D+eZ9FC5vnzWof7K11J6uQZZNRUq/Ui5QTfQZH3UjjNNv+klpT25/HK2TGEkvAcKomSzypxjK5izzhfCBk9swsLz/LRpD7WO2nsuFvrOZ3p5AneaIt5JVQYXWR8F9y3EA0PMW4gz0chxzP5EdDF09de7ssKs9NR3PxUKLg4UVY3rhZnkmLgolASC2UBXIx+t40QYHpK6FYXrYQozdLw=="
+        }
+      }
+    ]
+  },
+  {
+    "question": "Summarize the main idea of the most recent paper about RAG evaluation.",
+    "answer": [
+      {
+        "type": "text",
+        "text": "The most recent paper about RAG evaluation, titled \"Data Observability and Quality Gates for Production RAG Systems,\" focuses on addressing silent data corruption in RAG pipelines that can degrade the faithfulness of LLM answers. The main idea is to introduce automated quality gates using Great Expectations 1.x to detect and prevent stale and malformed embeddings from being served in production RAG systems.",
+        "extras": {
+          "signature": "CpgFAWkUfRMWYGApHkAmv6C8w3vcXUc0zvIdrUWPtsag0ogohDxkXQuyEXLQFEJYW7OONv4fwXHBwTfpv9fLtixyd22W3lUjgELz4WWAdFf6uR9tgmWyRmT8eR1dmhTYuPFT4Y4n40AYNvK6+vb9ZrMFibjYXwKRVoIe+G5++BB1cdYpbh+9Ue19LhQCxQ5eRybGBWpt2TwzhR1c4c+QV37PKPrJdSJcci06LS+Yzx4+0qy95R1j9PuF1evl3cQ5X/ghnQVpR1C3b55Hgh170TGWhOC/joNE9cb1neUdQ4Tc19FYJuDRQe952TiN1kslzgYfAh4wklYjVYLYBjfWOpebCLFCgw2y4lob/zeqNjVoGxbgNViBKYRaEuzvvYkHGqofEhzh2oHWdwyTngRgiZSFYtLj3yn7zSGQjmp6lCwq6GBwUk+MX1GAiDgll0xqvPBaAeHUN7yKWLiZoAeV5ahpXXafH/kOSPkf6NyuxhyTXJw8A2LTJpWv3b02E/yF7Gsk8rjoWlrz5S2Q+syXY+AsoFS1eKl0v8oSJWI7PowzALYXv2fWfnDGR8NXIfgK0iK5u2OMOSOwaPIjeoO/9MVv+EezqmmaQNKRcEHMIIEWcG7K6S24jDSY1PssBwAJFtL+WoFqVuKNwMSuN567pNtKQzzTC0XyePRYP2nJHZOeDQQXQCRaiB6aMFw8sYVfkhC0gRcKJcNr7abCt5RGsVuGiUYgwKiH9Bzn3aeR1rGOVpfmaKDyw3sYiyis9Y7MBB5oXCkiiI6Zk2w/jJ+jdhNz6Sp20Jpbbpjfd/P5jP8LxvN/LqZdZ0PT6xJFA+2wsq5OIKJY5eSiTlvzjGCeVosJ5xBPzFv2OAnlQzVIsiwkOBE7ue6eOyF1Iw=="
+        }
+      }
+    ]
+  }
+]
