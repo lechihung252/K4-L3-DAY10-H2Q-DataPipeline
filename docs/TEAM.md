@@ -2,7 +2,7 @@
 
 - **Tên Nhóm:** H2Q
 - **Mã Nhóm / Lớp:** `K4-L3-DAY10`
-- **Tên Repository Nộp Bài:** https://github.com/lechihung252/K4-L3A-Day10-Data-Pipeline-Data-Observability
+- **Tên Repository Nộp Bài:** https://github.com/lechihung252/K4-L3-DAY10-H2Q-DataPipeline
 
 ---
 

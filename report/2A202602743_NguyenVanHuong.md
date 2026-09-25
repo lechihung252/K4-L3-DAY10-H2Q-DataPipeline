@@ -9,7 +9,7 @@
 | Khóa/Lớp | K4 |
 | Tên nhóm | H2Q |
 | Vai trò chính | TV2 — Data Foundation: thu thập, làm sạch và tiêm lỗi dữ liệu |
-| Repository | https://github.com/lechihung252/K4-L3A-Day10-Data-Pipeline-Data-Observability |
+| Repository | https://github.com/lechihung252/K4-L3-DAY10-H2Q-DataPipeline |
 | Ngày hoàn thành | 2026-09-25 |
 
 ## 2. Vai trò và phạm vi công việc
