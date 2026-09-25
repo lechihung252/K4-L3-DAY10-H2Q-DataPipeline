@@ -8,6 +8,7 @@ from .utils import (
     read_json,
     safe_slug,
     write_csv,
+    write_dataframe,
     write_json,
     write_text,
 )
