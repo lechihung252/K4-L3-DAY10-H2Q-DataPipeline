@@ -12,8 +12,7 @@
 |---:|---|---|---|---|---|
 | 1 | | | | Trưởng nhóm / Pipeline Integrator (`core/`, `phase1.py`, `corruption_flow.py`) | `report/<MSSV1>_HoTen.md` |
 | 2 | | | | Data Foundation & Recovery (`crossref.py`, `cleaning.py`, raw data) | `report/<MSSV2>_HoTen.md` |
-| 3 | | | | RAG & Vector Index (`retrieval/index.py`, `embeddings.py`, ChromaDB) | `report/<MSSV3>_HoTen.md` |
-| 4 | | | | Observability & Evaluation (`quality.py` GX 1.x, `testset.py`, reporting) | `report/<MSSV4>_HoTen.md` |
+| 3 | Lê Duy Quân | 2A202602731 | leduyquan2574@gmail.com | TV3: Observability & Evaluation (`quality.py` GX 1.x, `testset.py`, reporting) | `report/2A202602731_LeDuyQuan.md` |
 
 *(Nếu nhóm có 3 hoặc 5-6 thành viên, xem bảng phân công chi tiết theo vai trò trong file `CHECKPOINTS.md`)*.
 
@@ -48,11 +47,11 @@
 - **Điều học được / Đóng góp chính:**
   - Cách cô lập các không gian vector để so sánh khách quan giữa dữ liệu sạch và dữ liệu bị lỗi.
 
-### ## HoVaTen4-MSSV4
-- **Vai trò:** Phụ trách Data Observability & Benchmark Evaluation.
+### ## LeDuyQuan-2A202602731
+- **Vai trò:** Phụ trách Data Observability & Benchmark Evaluation (TV3).
 - **Công việc chi tiết đã hoàn thành:**
-  - Thiết lập Quality Gate theo chuẩn mới **Great Expectations 1.x** và giám sát Freshness SLA trong `src/observability/quality.py`.
-  - Xây dựng bộ câu hỏi đánh giá chuẩn trong `src/evaluation/testset.py`.
-  - Đo lường và xuất bảng đối chiếu 3 trạng thái vào `data/reports/corruption_report.md`.
+  - Thiết lập Quality Gate theo chuẩn mới **Great Expectations 1.x** (`mode="ephemeral"`) với 4 Expectations và giám sát Freshness SLA trong `src/observability/quality.py`.
+  - Xây dựng bộ câu hỏi đánh giá chuẩn 10 câu hỏi bao phủ 4 dạng trong `src/evaluation/testset.py`.
+  - Đo lường và xuất bảng đối chiếu 3 trạng thái vào `data/reports/corruption_report.md` và `data/reports/phase1_report.md`.
 - **Điều học được / Đóng góp chính:**
-  - Cách thiết lập hệ thống cảnh báo sớm chặn đứng hiện tượng Silent Failure trước khi dữ liệu vào serving layer.
+  - Hiểu rõ cơ chế ngăn chặn Silent Failure bằng Quality Gate trước khi nạp dữ liệu vào Vector Database, và kỹ thuật đánh giá định lượng sự suy giảm chất lượng của RAG.
