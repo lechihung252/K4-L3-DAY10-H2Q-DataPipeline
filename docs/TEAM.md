@@ -51,5 +51,5 @@ Nhóm 3 thành viên. Mỗi file chỉ do một người sở hữu; chi tiết 
   - Tối ưu lazy loading import `datasets` trong `src/evaluation/metrics.py` và chuẩn hóa hợp đồng dữ liệu với `src/pipelines/phase1.py`.
 - **Điều học được / Đóng góp chính:**
   - Hiểu rõ cơ chế ngăn chặn Silent Failure bằng Quality Gate tự động trước khi nạp dữ liệu vào Vector Database, nguyên lý Idempotent Repair và kỹ thuật đánh giá định lượng sự suy giảm chất lượng của hệ thống RAG.
-  - Các commit chính: `4257758`, `7023d48`, `c15f891`.
+  - Các commit chính: `4257758`, `7023d48`.
 
