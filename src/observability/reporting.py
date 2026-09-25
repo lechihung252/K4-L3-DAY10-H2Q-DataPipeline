@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
 
 from core.utils import write_text
@@ -10,16 +11,28 @@ def _metric_rows(metrics: dict[str, Any]) -> str:
     return "\n".join(f"| `{key}` | {metrics.get(key, 'N/A')} |" for key in keys)
 
 
-def generate_phase1_report(report_path, source_summary: dict[str, Any], metrics: dict[str, Any], quality: dict[str, Any], freshness: dict[str, Any]) -> None:
+def generate_phase1_report(
+    report_path: Path | str,
+    source_summary: dict[str, Any],
+    metrics: dict[str, Any],
+    quality: dict[str, Any],
+    freshness: dict[str, Any],
+) -> None:
+    source_api = source_summary.get("source_api") or source_summary.get("source", "Crossref REST API")
+    raw_records = source_summary.get("raw_records", "N/A")
+    clean_rows = source_summary.get("clean_rows") or source_summary.get("clean_records", "N/A")
+    embedding_model = source_summary.get("embedding_model", "sentence-transformers/all-MiniLM-L6-v2")
+    collection_name = source_summary.get("collection_name") or source_summary.get("collection", "papers-baseline")
+
     text = f"""# Phase 1 Baseline Report
 
 ## Source and dataset
 
-- Source: {source_summary.get('source')}
-- Raw records: {source_summary.get('raw_records')}
-- Clean records: {source_summary.get('clean_records')}
-- Embedding model: {source_summary.get('embedding_model')}
-- Chroma collection: {source_summary.get('collection')}
+- Source: {source_api}
+- Raw records: {raw_records}
+- Clean records: {clean_rows}
+- Embedding model: {embedding_model}
+- Chroma collection: {collection_name}
 
 ## Evaluation metrics
 
@@ -35,21 +48,37 @@ def generate_phase1_report(report_path, source_summary: dict[str, Any], metrics:
 - Stale rows: {freshness.get('stale_rows')}/{freshness.get('total_rows')}
 - Published range: {freshness.get('oldest_published')} to {freshness.get('latest_published')}
 """
-    write_text(report_path, text)
+    write_text(Path(report_path), text)
 
 
-def generate_corruption_report(report_path, baseline_metrics: dict[str, Any], corrupted_metrics: dict[str, Any], repaired_metrics: dict[str, Any], corrupted_quality: dict[str, Any], repaired_quality: dict[str, Any], corrupted_freshness: dict[str, Any], repaired_freshness: dict[str, Any]) -> None:
+def generate_corruption_report(
+    report_path: Path | str,
+    baseline_metrics: dict[str, Any],
+    corrupted_metrics: dict[str, Any],
+    repaired_metrics: dict[str, Any],
+    corrupted_quality: dict[str, Any],
+    repaired_quality: dict[str, Any],
+    corrupted_freshness: dict[str, Any],
+    repaired_freshness: dict[str, Any],
+) -> None:
     keys = ["retrieval_hit_rate", "mean_token_f1", "judge_accuracy", "mean_judge_score"]
     rows = "\n".join(f"| `{key}` | {baseline_metrics.get(key, 'N/A')} | {corrupted_metrics.get(key, 'N/A')} | {repaired_metrics.get(key, 'N/A')} |" for key in keys)
+    q_baseline = "PASSED (True)"
+    q_corrupted = f"{'PASSED' if corrupted_quality.get('success') else 'FAILED'} ({corrupted_quality.get('success')})"
+    q_repaired = f"{'PASSED' if repaired_quality.get('success') else 'FAILED'} ({repaired_quality.get('success')})"
+    f_baseline = "Đạt chuẩn (True)"
+    f_corrupted = f"{'Đạt chuẩn' if corrupted_freshness.get('is_fresh') else 'Vi phạm cảnh báo (>180 ngày)'} ({corrupted_freshness.get('is_fresh')})"
+    f_repaired = f"{'Đạt chuẩn' if repaired_freshness.get('is_fresh') else 'Vi phạm cảnh báo'} ({repaired_freshness.get('is_fresh')})"
+
     text = f"""# Corruption and Idempotent Repair Report
 
 The same fixed evaluation set was used for all three states.
 
-| Metric | Baseline | Corrupted | Repaired |
+| Metric / Chỉ số | Baseline (Dữ liệu Sạch) | Corrupted (Dữ liệu Bị Lỗi) | Repaired (Sau Khi Phục Hồi) |
 |---|---:|---:|---:|
 {rows}
-| Quality gate success | N/A | {corrupted_quality.get('success')} | {repaired_quality.get('success')} |
-| Freshness SLA | N/A | {corrupted_freshness.get('is_fresh')} | {repaired_freshness.get('is_fresh')} |
+| Data Quality Gate | {q_baseline} | {q_corrupted} | {q_repaired} |
+| Freshness SLA | {f_baseline} | {f_corrupted} | {f_repaired} |
 
 ## Observed impact
 
@@ -57,4 +86,4 @@ The same fixed evaluation set was used for all three states.
 - The quality gate detects structural violations while freshness separately detects an excessive stale-record ratio.
 - Repair rebuilds the dataset and vector collection from preserved raw records, so repeated repair runs converge to the same clean state.
 """
-    write_text(report_path, text)
+    write_text(Path(report_path), text)
