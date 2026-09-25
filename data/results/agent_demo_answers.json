@@ -1,0 +1,10 @@
+[
+  {
+    "question": "Which papers in the corpus discuss agentic retrieval-augmented generation?",
+    "error": "Agent demo skipped: NotImplementedError: "
+  },
+  {
+    "question": "Summarize the main idea of the most recent paper about RAG evaluation.",
+    "error": "Agent demo skipped: NotImplementedError: "
+  }
+]
