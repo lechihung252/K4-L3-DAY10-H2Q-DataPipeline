@@ -10,9 +10,9 @@ Phần `src/retrieval/` (embedding, ChromaDB, QA agent) và `src/evaluation/metr
 
 | Người | Vai trò | File sở hữu (chỉ người này sửa) | Checkpoint chính |
 |---|---|---|---|
-| **TV1** — `[Tên]` | Trưởng nhóm, ghép pipeline, phụ trách RAG | `src/pipelines/phase1.py`, `src/pipelines/corruption_flow.py`, `src/core/`, `src/retrieval/` (đọc hiểu, chỉnh nếu cần), `script/`, **toàn bộ output trong `data/`** (trừ `data/raw/`), `report/group_report.md` | CP0, CP2, CP3, CP5 |
-| **TV2** — `[Tên]` | Dữ liệu: lấy, làm sạch, tiêm lỗi | `src/ingestion/crossref.py`, `src/ingestion/cleaning.py`, `src/ingestion/corruption.py`, `data/raw/` | CP0, CP1, CP4 |
-| **TV3** — `[Tên]` | Giám sát chất lượng và đánh giá | `src/observability/quality.py` (Great Expectations 1.x và Freshness), `src/observability/reporting.py`, `src/evaluation/testset.py` | CP1, CP2, CP3, CP5 |
+| **TV1** — Lê Chí Hùng | Trưởng nhóm, ghép pipeline, phụ trách RAG | `src/pipelines/phase1.py`, `src/pipelines/corruption_flow.py`, `src/core/`, `src/retrieval/` (đọc hiểu, chỉnh nếu cần), `script/`, **toàn bộ output trong `data/`** (trừ `data/raw/`), `report/group_report.md` | CP0, CP2, CP3, CP5 |
+| **TV2** — Nguyễn Văn Hưởng | Dữ liệu: lấy, làm sạch, tiêm lỗi | `src/ingestion/crossref.py`, `src/ingestion/cleaning.py`, `src/ingestion/corruption.py`, `data/raw/` | CP0, CP1, CP4 |
+| **TV3** — Lê Duy Quân | Giám sát chất lượng và đánh giá | `src/observability/quality.py` (Great Expectations 1.x và Freshness), `src/observability/reporting.py`, `src/evaluation/testset.py` | CP1, CP2, CP3, CP5 |
 
 Bước phục hồi (repair) không cần file riêng: TV1 gọi lại `load_raw_records()` rồi `build_clean_dataframe()` của TV2 trong `corruption_flow.py`.
 
